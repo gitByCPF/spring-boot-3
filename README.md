@@ -1,1 +1,27 @@
-# 这是学习过程中遇到的问题及解决方案
+## 这是复习过程中遇到的问题及解决方案
+
+- Copilot要引入插件，还对IDEA版本有要求
+- maven用自己安装的版本，配置环境变量，IDEA引用自安装maven，使用阿里镜像，设置仓库地址
+- 不建议字段注入，建议构造器注入，安全好测试
+- alt+F1可以打开一个文件在项目中的位置
+- 类的描述信息
+  - @author 作者 符合java规范 值可以用${USER}，取用的是系统当前用户名
+  - @since 版本号 符合java规范 推荐写固定值 例如17
+  - @date 日期 不符合java规范 推荐使用Date ${DATE}替代
+  - @description 描述信息 不符合java规范 推荐使用Description TODO 描述
+- springboot配置parent只是为了引入spring-boot-dependencies的版本管理，如果要使用相关类，还需要在dependencies中引入spring-boot-starter
+- springboot官网各种版本右上角的版本符号： 
+  - GA表示general availability，稳定版本
+  - MR表示milestone release，里程碑版本
+  - RC表示release candidate，候选版本
+  - PRE表示预览版本
+  - SNAPSHOT表示快照版本
+- IDEA创建java项目时，Catalog实际上指选择的项目模板类型：maven、gradle、javafx等
+- maven要在mirror标签内配置阿里云http协议镜像仓库，默认的maven-default-http-blocker要注释掉
+- Use settings from .mvn/maven.config勾选意味着如果项目中有该目录该文件，以该配置为主
+- Vulnerability found in dependencies 依赖中出现了漏洞
+- jackson-databind低于2.15.2版本有风险，实测spring-boot-starter 3.4.5版本无该漏洞
+- Maven Helper插件可以把依赖以图的形式展示，ctrl+alt+shift+u
+- IDEA File->New Projects Setup->settings for new projects中的视图是缩略版本，完整版可以close project后在欢迎页查看
+- 
+- 
