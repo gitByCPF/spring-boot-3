@@ -24,4 +24,3 @@
 - Maven Helper插件可以把依赖以图的形式展示，ctrl+alt+shift+u
 - IDEA File->New Projects Setup->settings for new projects中的视图是缩略版本，完整版可以close project后在欢迎页查看
 - 
-- 
