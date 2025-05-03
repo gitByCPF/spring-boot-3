@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: boot3-02-demo
+pig:
+  id: 1
+  age: 18
+  name: 小猪
+sheep:
+  id: 2
+  age: 20
+  name: 小羊

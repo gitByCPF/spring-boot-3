@@ -23,4 +23,45 @@
 - jackson-databind低于2.15.2版本有风险，实测spring-boot-starter 3.4.5版本无该漏洞
 - Maven Helper插件可以把依赖以图的形式展示，ctrl+alt+shift+u
 - IDEA File->New Projects Setup->settings for new projects中的视图是缩略版本，完整版可以close project后在欢迎页查看
-- 
+- 依赖管理
+  - 场景启动器
+  - parent的父项目是spring-boot-dependencies，它是版本仲裁中心，规定了所有依赖的版本
+  - 如果自定义版本号，利用maven的就近原则，在当前项目申明的版本号会覆盖父项目的版本号
+    - 直接在properties中配置版本号
+    - 在dependencies中配置版本号，这是直接写死的方式
+- 自动配置机制
+  - 默认的包扫描规则：
+    - @SpringBootApplication注解的类所在包及其子包
+      - 其中的属性scanBasePackages可以自定义包扫描路径
+    - @ComponentScan注解的类所在包及其子包
+  - 配置默认值
+    - 配置文件中的某个配置与某个类的对象属性值是一一绑定的，这个类叫属性类
+    - 我们也可以自己定义配置类，@ConfigurationProperties注解的类
+  - 按需加载自动装配:
+    - 导入场景启动器，触发spring-boot-autoconfigure模块的自动装配，容器就有相关场景的功能对象
+- 常用注解
+  - 组件注册
+    - @Component
+    - @Service
+    - @Repository
+    - @Controller
+    - ioc.xml中配置
+    - @Configuration(@SpringBootConfiguration)+@Bean
+    - 默认单实例 scope="singleton"； scope="prototype"是变为多实例的
+    - @Import直接导入第三方组件，需要在配置类中使用，容器中对象名就是全类名
+  - 条件注解
+    - @ConditionalOnClass：类存在
+    - @ConditionalOnMissingClass：类不存在
+    - @ConditionalOnBean：容器中有某个对象
+    - @ConditionalOnMissingBean：容器中没有某个对象
+    - @ConditionalOnProperty：配置文件中有某个属性
+    - @ConditionalOnResource：资源文件存在
+    - @ConditionalOnJava：java版本符合要求
+  - 属性绑定
+    - @ConfigurationProperties：配置文件中的属性与类的属性绑定，配置类仍需要注册到容器中
+    - @EnableConfigurationProperties(SomeProps.class):
+      - 1.单一职责原则
+      - 2.配置类的位置随意，不需要在主类的包扫描路径下
+      - 3.更解耦，方便轻量化测试
+      - 导入第三方jar包时，如果jar包中有@ConfigurationProperties注解的类，只能使用这种方式
+  - 
