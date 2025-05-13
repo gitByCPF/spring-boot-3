@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: boot3-03-logging
+
+logging:
+  pattern:
+    console: ${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd'T'HH:mm:ss.SSSXXX}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}){} %clr(${PID:-}){magenta} %clr(--- %esb(){APPLICATION_NAME}%esb{APPLICATION_GROUP}[%15.15t] ${LOG_CORRELATION_PATTERN:-}){faint}%clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}
+  level:
+    # 默认root日志级别就是Info
+    root: info
+    # 可以指定包名的日志级别
+    com.cpf.logging.controller: trace
+  # 可以对路径进行分组管理，默认有root sql web组
+  group:
+    a: com.cpf.logging.controller,com.cpf.logging.service
+  file:
+    # 默认是从项目根部开始的相对路径
+    name: boot3-03-logging/logs/boot3-03-logging.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: ${LOG_FILE}.%d{yyyy-MM-dd}.%i.gz
+      max-file-size: 512KB
+      total-size-cap: 100MB
