@@ -103,3 +103,99 @@ Spring Boot 为 Spring MVC 提供了自动配置，适用于大多数应用程�
 
   - ![WebMvcConfigurer接口方法](./pictures4md/WebMvcConfigurer方法.jpg)
 
+  - 静态资源规则源码（WebMvcAutoConfigurationAdapter#addResourceHandler）
+
+  - ```java
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        if (!this.resourceProperties.isAddMappings()) {
+           logger.debug("Default resource handling disabled");
+           return;
+        }
+        // 规则一
+        addResourceHandler(registry, this.mvcProperties.getWebjarsPathPattern(),
+              "classpath:/META-INF/resources/webjars/");
+        // 规则二
+        addResourceHandler(registry, this.mvcProperties.getStaticPathPattern(), (registration) -> {
+           registration.addResourceLocations(this.resourceProperties.getStaticLocations());
+           if (this.servletContext != null) {
+              ServletContextResource resource = new ServletContextResource(this.servletContext, SERVLET_LOCATION);
+              registration.addResourceLocations(resource);
+           }
+        });
+    }
+    ```
+
+    - 规则一："/webjars/**"内的资源都到"classpath:/META-INF/resources/webjars/"去找
+
+    - 规则二："/**"内的资源到{ "classpath:/META-INF/resources/", "classpath:/resources/", "classpath:/static/", "classpath:/public/" }去找
+
+    - 规则三：http cache规则（了解）
+
+    - ```java
+      private void addResourceHandler(ResourceHandlerRegistry registry, String pattern,
+             Consumer<ResourceHandlerRegistration> customizer) {
+          if (registry.hasMappingForPattern(pattern)) {
+             return;
+          }
+          ResourceHandlerRegistration registration = registry.addResourceHandler(pattern);
+          customizer.accept(registration);
+          registration.setCachePeriod(getSeconds(this.resourceProperties.getCache().getPeriod()));
+          registration.setCacheControl(this.resourceProperties.getCache().getCachecontrol().toHttpCacheControl());
+          registration.setUseLastModified(this.resourceProperties.getCache().isUseLastModified());
+          customizeResourceHandlerRegistration(registration);
+      }
+      ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

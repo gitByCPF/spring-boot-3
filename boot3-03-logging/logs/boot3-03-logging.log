@@ -412,3 +412,11 @@ ERROR in ch.qos.logback.core.pattern.parser.Compiler@26fb628 - [wEx] is not a va
 2025-05-14 00:32:47.100 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
 2025-05-14 00:32:47.659 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
 2025-05-14 00:32:47.695 [main] INFO  com.cpf.logging.LoggingApplication - Started LoggingApplication in 3.756 seconds (process running for 4.743)
+2025-05-14 17:14:17.164 [main] INFO  com.cpf.logging.LoggingApplication - Starting LoggingApplication using Java 17.0.15 with PID 12072 (E:\IntelliJ IDEA 2024.2.3\IdeaProjects\spring-boot-3\boot3-03-logging\target\classes started by cui pengfei in E:\IntelliJ IDEA 2024.2.3\IdeaProjects\spring-boot-3)
+2025-05-14 17:14:17.168 [main] INFO  com.cpf.logging.LoggingApplication - No active profile set, falling back to 1 default profile: "default"
+2025-05-14 17:14:19.685 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2025-05-14 17:14:19.687 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-05-14 17:14:19.688 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.40]
+2025-05-14 17:14:19.802 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-05-14 17:14:20.590 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2025-05-14 17:14:20.669 [main] INFO  com.cpf.logging.LoggingApplication - Started LoggingApplication in 6.159 seconds (process running for 11.599)
