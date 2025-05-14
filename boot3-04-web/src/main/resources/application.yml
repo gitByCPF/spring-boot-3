@@ -1,0 +1,4 @@
+spring:
+  application:
+    name: boot3-04-web
+
