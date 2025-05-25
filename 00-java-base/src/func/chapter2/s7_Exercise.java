@@ -27,8 +27,6 @@ public class s7_Exercise {
         // 能延迟决定是否促销
         Double finalPrice = vipCalculator.apply(true);
         System.out.println(finalPrice);
-
-
     }
 
     // 传统方法
